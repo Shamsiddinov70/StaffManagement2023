@@ -34,14 +34,10 @@ namespace StaffManagement2023
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-            }
 
             /*app.UseDefaultFiles();
             app.UseStaticFiles();*/
-            app.UseFileServer();
+            //app.UseFileServer();
 
             app.UseRouting();
 
@@ -49,6 +45,7 @@ namespace StaffManagement2023
             {
                 endpoints.MapGet("/", async context =>
                 {
+                    throw new Exception("Xato");
                     await context.Response.WriteAsync("Main Page");
                 });
             });
