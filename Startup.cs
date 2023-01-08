@@ -39,30 +39,17 @@ namespace StaffManagement2023
                 app.UseExceptionHandler("/Error");
             }
 
+            /*app.UseDefaultFiles();
+            app.UseStaticFiles();*/
+            app.UseFileServer();
+
             app.UseRouting();
-
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("Middleware1 dan Salom\n");
-                next();
-            });
-
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync("Middleware2 dan Salom\n");
-                next();
-            });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Main Page");
-                });
-
-                endpoints.MapGet("/users", async context =>
-                {
-                    await context.Response.WriteAsync("Users page");
                 });
             });
         }
